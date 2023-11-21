@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title></title>
+    <style>
+        .top-image{
+            top: 0px;
+            left: 0px;
+            width: auto;
+            height: 145px;
+            background: transparent linear-gradient(84deg, #CC092F 0%, #B81570 100%) 0% 0% no-repeat padding-box;
+            opacity: 1;
+        }
+
+        .cp-title{
+            margin-top: 50px;
+        }
+
+        .content {
+            margin-top: 0px;
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+
+        .paragraph{
+            font-size: 18px !important;
+        }
+
+        .amount-bg{
+            top: 320px;
+            left: 80px;
+            width: available;
+            height: 41px;
+            background: var(--cta-xlight-alert-info_xlight-extended-blue_xlight-primary_xlight-empresas-ebf0ff) 0% 0% no-repeat padding-box;
+            background: #EBF0FF 0% 0% no-repeat padding-box;
+            border-radius: 4px;
+            opacity: 1;
+        }
+
+        .border{
+            border: 1px;
+            border-color: #F0F1F5;
+            border-style: solid;
+        }
+
+        .authentication{
+            /* Layout Properties */
+            top: 0px;
+            left: 80px;
+            width: available;
+            height: 173px;
+            background: #F0F1F5 0% 0% no-repeat padding-box;
+            opacity: 1;
+        }
+
+        .code-row-1{
+
+        }
+
+        .code-row-2{
+
+        }
+
+        .code-row-3{}
+
+
+    </style>
+
+    <!-- CDN: das folhas de estilos liquid -->
+<!--    <link href="https://banco.bradesco/cdn/design-system/dist/design-system-1.21.1/reset.bundle.min.css" rel="stylesheet" />-->
+<!--    <link href="https://banco.bradesco/cdn/design-system/dist/design-system-1.21.1/design-system.bundle.min.css" rel="stylesheet" />-->
+    <!-- CDN: das folhas de estilos liquid -->
+</head>
+
+<body>
+
+<div class="top-image">
+
+</div>
+
+<div class="content">
+
+    <h1 class="brad-font-title-xl brad-text-color-neutral-100 brad-m-sm-b cp-title" th:if="${tipoComprovante == '32'}">
+        Teste tipo Comprovante: [[${tipoComprovante}]]
+    </h1>
+
+    <h1 class="brad-font-title-xl brad-text-color-neutral-100 brad-m-sm-b cp-title">
+        [[${titulo}]]
+    </h1>
+
+    <p class="brad-font-paragraph-md brad-m-sm-b">[[${dataHora}]]</p>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-lg-b">
+        Número de controle:
+        <span class="brad-font-weight-bold">[[${numeroControle}]]</span>
+    </p>
+
+    <div class="amount-bg brad-m-lg-b">
+        <h1 class="brad-font-title-xl brad-m-lg-b brad-text-color-neutral-100 brad-flex brad-flex-justify-content-center brad-flex-align-items-center">
+            Valor: R$ [[${valor}]]
+        </h1>
+    </div>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        Número do banco/Agência:
+        <span class="brad-font-weight-bold">[[${numeroBancoAgencia}]]</span>
+    </p>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        Canal de pagamento:
+        <span class="brad-font-weight-bold"> [[${canalPagamento}]]</span>
+    </p>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        Data do pagamento:
+        <span class="brad-font-weight-bold brad-m-sm-b"> [[${dataPagamento}]]</span>
+    </p>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        Código de barras:
+        <span class="brad-font-weight-bold">[[${codigoBarras}]] </span>
+    </p>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        Descrição:
+        <span class="brad-font-weight-bold">[[${descricao}]]</span>
+    </p>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        UF favorecida:
+        <span class="brad-font-weight-bold">[[${ufFavorecida}]]</span>
+    </p>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        Código de receita:
+        <span class="brad-font-weight-bold">[[${codigoReceita}]]</span>
+    </p>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        CPF/CNPJ:
+        <span class="brad-font-weight-bold">[[${cpfCnpj}]]</span>
+    </p>
+
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        DI/DSI:
+        <span class="brad-font-weight-bold">[[${diDsi}]]</span>
+    </p>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        AIIM:
+        <span class="brad-font-weight-bold">[[${aiim}]]</span>
+    </p>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        Referência:
+        <span class="brad-font-weight-bold">[[${referencia}]]</span>
+    </p>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        Identificador:
+        <span class="brad-font-weight-bold">[[${identificador}]]</span>
+    </p>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        Valor do pagamento:
+        <span class="brad-font-weight-bold">R$ [[${valorPagamento}]]</span>
+    </p>
+
+    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        Autenticação:
+        <span class="brad-font-weight-bold">[[${autenticacao}]]</span>
+    </p>
+
+    <div class="border"></div>
+
+    <div class="brad-m-md-t">
+        <p class="brad-font-paragraph-md paragraph  brad-m-sm-b">
+            Comprovante de pagamento emitido de acordo com a Portaria CAT- 126, de 16/09/2011, e autorizado pelo Processo nº SF-13836-561535/1999.
+        </p>
+
+        <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+            Via do contribuinte
+        </p>
+    </div>
+
+    <div class="border"></div>
+
+    <div class="authentication " style="margin-top: 56px">
+        <div class="brad-flex brad-flex-justify-content-center brad-flex-align-items-center">
+            <h2 class="brad-font-title-xl  brad-text-color-neutral-100 brad-m-sm-t">
+                Autenticação
+            </h2>
+        </div>
+
+
+        <div class="code-row-1 brad-flex brad-flex-justify-content-center brad-flex-align-items-center">
+            <p class="brad-font-paragraph-md paragraph brad-m-sm-b brad-m-sm-t">be68ab0b 79a6609a ba43db15 8581596d</p>
+        </div>
+
+        <div class="code-row-2 brad-flex brad-flex-justify-content-center brad-flex-align-items-center">
+            <p class="brad-font-paragraph-md paragraph brad-m-sm-b">be68ab0b 79a6609a ba43db15 8581596d</p>
+        </div>
+
+        <div class="code-row-3 brad-flex brad-flex-justify-content-center brad-flex-align-items-center">
+            <p class="brad-font-paragraph-md paragraph brad-m-sm-b ">be68ab0b 79a6609a ba43db15 8581596d</p>
+        </div>
+
+
+    </div>
+</div>
+
+<!-- CDN: dos serviços liquid -->
+<!--<script src="https://banco.bradesco/cdn/design-system/dist/design-system-1.21.1/design-system.bundle.min.js" integrity="sha256-xSM+ICwN9Jvsx9A5HTHhovzE7p86xJHfByu5U1JKp10=" crossorigin="anonymous"></script>-->
+<!-- CDN: dos serviços liquid -->
+</body>
+
+</html>
