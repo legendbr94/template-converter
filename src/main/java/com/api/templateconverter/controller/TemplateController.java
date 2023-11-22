@@ -23,14 +23,9 @@ public class TemplateController {
     @PostMapping
     public ResponseEntity<String> handlePostRequest(@RequestBody Object obj) throws DocumentException, IOException {
 
+       String resultado =  pdfConverterService.convertPdf();
 
-        pdfConverterService.convertPdf();
-
-
-        return new ResponseEntity<>("Data received successfully", HttpStatus.OK);
+        return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
-
-
-
 
 }

@@ -2,15 +2,18 @@
 <html lang="pt" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <title></title>
     <style>
         .top-image{
-            top: 0px;
-            left: 0px;
-            width: auto;
-            height: 145px;
-            background: transparent linear-gradient(84deg, #CC092F 0%, #B81570 100%) 0% 0% no-repeat padding-box;
-            opacity: 1;
+            /*top: 0px;*/
+            /*left: 0px;*/
+            /*width: available;*/
+            /*height: 145px;*/
+            /*background: transparent linear-gradient(84deg, #CC092F 0%, #B81570 100%) 0% 0% no-repeat padding-box;*/
+            /*opacity: 1;*/
         }
 
         .cp-title{
@@ -32,7 +35,7 @@
             left: 80px;
             width: available;
             height: 41px;
-            background: var(--cta-xlight-alert-info_xlight-extended-blue_xlight-primary_xlight-empresas-ebf0ff) 0% 0% no-repeat padding-box;
+            /*background: var(--cta-xlight-alert-info_xlight-extended-blue_xlight-primary_xlight-empresas-ebf0ff) 0% 0% no-repeat padding-box;*/
             background: #EBF0FF 0% 0% no-repeat padding-box;
             border-radius: 4px;
             opacity: 1;
@@ -66,16 +69,37 @@
 
 
     </style>
-
-    <!-- CDN: das folhas de estilos liquid -->
-<!--    <link href="https://banco.bradesco/cdn/design-system/dist/design-system-1.21.1/reset.bundle.min.css" rel="stylesheet" />-->
-<!--    <link href="https://banco.bradesco/cdn/design-system/dist/design-system-1.21.1/design-system.bundle.min.css" rel="stylesheet" />-->
-    <!-- CDN: das folhas de estilos liquid -->
 </head>
 
 <body>
 
 <div class="top-image">
+    <svg width="1250" height="144" viewBox="0 0 1250 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="1250" height="144" fill="url(#gradient-fill)"/>
+        <defs>
+            <linearGradient id="gradient-fill" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+
+                <stop offset="0" stop-color="#cc092f" />
+
+                <stop offset="0.14285714285714285" stop-color="#cc0039" />
+
+                <stop offset="0.2857142857142857" stop-color="#cb0043" />
+
+                <stop offset="0.42857142857142855" stop-color="#c9004d" />
+
+                <stop offset="0.5714285714285714" stop-color="#c60056" />
+
+                <stop offset="0.7142857142857142" stop-color="#c2005f" />
+
+                <stop offset="0.8571428571428571" stop-color="#bd0a68" />
+
+                <stop offset="1" stop-color="#b81570" />
+
+            </linearGradient>
+        </defs>
+    </svg>
+
+
 
 </div>
 
@@ -210,10 +234,6 @@
 
     </div>
 </div>
-
-<!-- CDN: dos serviços liquid -->
-<!--<script src="https://banco.bradesco/cdn/design-system/dist/design-system-1.21.1/design-system.bundle.min.js" integrity="sha256-xSM+ICwN9Jvsx9A5HTHhovzE7p86xJHfByu5U1JKp10=" crossorigin="anonymous"></script>-->
-<!-- CDN: dos serviços liquid -->
 </body>
 
 </html>
