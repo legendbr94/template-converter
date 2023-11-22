@@ -2,11 +2,13 @@ package com.api.templateconverter.service;
 
 
 
+import com.api.templateconverter.dto.DadosArquivo;
 import com.api.templateconverter.util.CompactacaoUtil;
 import org.springframework.stereotype.Service;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
 
 import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
@@ -34,17 +36,16 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @Service
 public class PdfConverterService {
 
-        public String convertPdf() throws IOException {
-
-            return this.convertHtmlPdf();
+        public String convertPdf(DadosArquivo obj) throws IOException {
+            return this.convertHtmlPdf(obj);
         }
 
-    public String convertHtmlPdf() throws IOException {
+    public String convertHtmlPdf(DadosArquivo obj) throws IOException {
         String comprovanteHtml = "";
         String arquivoPDFString = "";
 
 
-        comprovanteHtml =  parseThymeleafTemplate();
+        comprovanteHtml =  parseThymeleafTemplate(obj);
 
         ByteArrayOutputStream tempPdf = createPdf(comprovanteHtml);
         ByteArrayOutputStream arquivoPDF = new ByteArrayOutputStream();
@@ -132,19 +133,7 @@ public class PdfConverterService {
         }
     }
 
-
-
-
-
-
-
-
-//    public void convertPdf() throws DocumentException, IOException {
-//        String html = parseThymeleafTemplate();
-//        generatePdfFromHtml(html);
-//    }
-//
-    private String parseThymeleafTemplate() {
+    private String parseThymeleafTemplate(DadosArquivo dadosArquivo) {
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
@@ -153,10 +142,52 @@ public class PdfConverterService {
         templateEngine.setTemplateResolver(templateResolver);
 
         Context context = new Context();
-        context.setVariable("to", "Testannnnnnnnnnnnnnndo");
+
+
+        Field[] fields = DadosArquivo.class.getDeclaredFields();
+
+        for (Field field : fields) {
+            try {
+                // Make the field accessible (even if it's private)
+                field.setAccessible(true);
+
+                // Set Thymeleaf variable using field name and field value
+                context.setVariable(field.getName(), field.get(dadosArquivo));
+
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         return templateEngine.process("thymeleaf_template", context);
     }
+
+
+
+
+
+
+
+//Implementação com Lib: flying-saucer-pdf
+//    public void convertPdf() throws DocumentException, IOException {
+//        String html = parseThymeleafTemplate();
+//        generatePdfFromHtml(html);
+//    }
+//
+//    private String parseThymeleafTemplate() {
+//        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+//        templateResolver.setSuffix(".html");
+//        templateResolver.setTemplateMode(TemplateMode.HTML);
+//
+//        TemplateEngine templateEngine = new TemplateEngine();
+//        templateEngine.setTemplateResolver(templateResolver);
+//
+//        Context context = new Context();
+//        context.setVariable("to", "Testannnnnnnnnnnnnnndo");
+//
+//        return templateEngine.process("thymeleaf_template", context);
+//    }
 //
 //    public void generatePdfFromHtml(String html) throws IOException, DocumentException {
 //        String outputFolder = System.getProperty("user.home") + File.separator + "thymeleaf.pdf";

@@ -2,36 +2,63 @@
 <html lang="pt" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<!--    <meta charset="UTF-8">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <title></title>
     <style>
-        * {
-            font-family: "Montserrat", sans-serif;
+        body {
+            font-family: "Bradesco Sans", "Montserrat", "Helvetica", "Arial", sans-serif;
+            padding: 0;
         }
 
         .top-image{
             margin-top: -50px;
             margin-left: -50px;
-            /*width: available;*/
-            /*height: 145px;*/
-            /*background: transparent linear-gradient(84deg, #CC092F 0%, #B81570 100%) 0% 0% no-repeat padding-box;*/
-            /*opacity: 1;*/
         }
 
         .cp-title{
-            margin-top: 50px;
+            font-weight: 600;
+            letter-spacing: 0px;
+            color: #000000;
+            opacity: 1;
+            font-size: 22px !important;
+            margin-top: -30px;
+            margin-bottom: 16px;
         }
 
         .content {
             margin-top: 0px;
-            margin-left: 80px;
-            margin-right: 80px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        .controlNumber{
+            margin-bottom: 32px;
+            font-size: 20px !important;
+            font-weight: 500;
+            letter-spacing: 0px;
+            color: #47484c;
+            opacity: 1;
+        }
+
+        .dateHour{
+            font-size: 16px !important;
+            color: #47484c;
+            margin-bottom: 8px;
         }
 
         .paragraph{
-            font-size: 18px !important;
+            margin-bottom: 16px;
+            font-size: 20px !important;
+            font-weight: 500;
+            letter-spacing: 0px;
+            color: #47484c;
+            opacity: 1;
+        }
+        .paragraph-data{
+            font-size: 20px !important;
+            font-weight: 600;
+            letter-spacing: 0px;
+            color: #000000;
+            opacity: 1;
         }
 
         .amount-bg{
@@ -39,10 +66,22 @@
             left: 80px;
             width: available;
             height: 41px;
-            /*background: var(--cta-xlight-alert-info_xlight-extended-blue_xlight-primary_xlight-empresas-ebf0ff) 0% 0% no-repeat padding-box;*/
             background: #EBF0FF 0% 0% no-repeat padding-box;
             border-radius: 4px;
             opacity: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .amount{
+            padding-top: 5px;
+            font-size: 28px !important;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .border{
@@ -53,7 +92,9 @@
 
         .authentication{
             /* Layout Properties */
-            top: 0px;
+            margin-top: 56px;
+            padding-top: 5px;
+            padding-bottom: 35px;
             left: 80px;
             width: available;
             height: 173px;
@@ -61,15 +102,40 @@
             opacity: 1;
         }
 
-        .code-row-1{
-
+        .authentication-title{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            letter-spacing: 0px;
+            color: #000000;
+            opacity: 1;
+            font-size: 24px !important;
         }
 
-        .code-row-2{
-
+        .code-row{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            font-size: 20px !important;
+            font-weight: 500;
+            letter-spacing: 0px;
+            color: #47484c;
         }
 
-        .code-row-3{}
+        #tdAuth td {
+            max-width: 175px;
+            text-align: center;
+            font-size: 18px;
+            color: #47484c;
+            font-weight: 500;
+            letter-spacing: 0px;
+            opacity: 1;
+            padding: 0 8px;
+        }
 
 
     </style>
@@ -82,100 +148,98 @@
 
 </div>
 
-
-
     <div class="content">
 
-    <h1 class="brad-font-title-xl brad-text-color-neutral-100 brad-m-sm-b cp-title" th:if="${tipoComprovante == '32'}">
+    <h1 th:if="${tipoComprovante == '32'}">
         Teste tipo Comprovante: [[${tipoComprovante}]]
     </h1>
 
-    <h1 class="brad-font-title-xl brad-text-color-neutral-100 brad-m-sm-b cp-title">
+    <h1 class="cp-title">
         [[${titulo}]]
     </h1>
 
-    <p class="brad-font-paragraph-md brad-m-sm-b">[[${dataHora}]]</p>
+    <p class="dateHour">[[${dataHora}]]</p>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-lg-b">
+    <p class="controlNumber">
         Número de controle:
-        <span class="brad-font-weight-bold">[[${numeroControle}]]</span>
+        <span class="paragraph-data">[[${numeroControle}]]</span>
     </p>
 
-    <div class="amount-bg brad-m-lg-b">
-        <h1 class="brad-font-title-xl brad-m-lg-b brad-text-color-neutral-100 brad-flex brad-flex-justify-content-center brad-flex-align-items-center">
+    <div class="amount-bg">
+        <h1 class="amount">
             Valor: R$ [[${valor}]]
         </h1>
     </div>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+    <p class="paragraph">
         Número do banco/Agência:
-        <span class="brad-font-weight-bold">[[${numeroBancoAgencia}]]</span>
+        <span class="paragraph-data">[[${numeroBancoAgencia}]]</span>
     </p>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+    <p class="paragraph">
         Canal de pagamento:
-        <span class="brad-font-weight-bold"> [[${canalPagamento}]]</span>
+        <span class="paragraph-data"> [[${canalPagamento}]]</span>
     </p>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+    <p class="paragraph">
         Data do pagamento:
-        <span class="brad-font-weight-bold brad-m-sm-b"> [[${dataPagamento}]]</span>
+        <span class="paragraph-data"> [[${dataPagamento}]]</span>
     </p>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+    <p class="paragraph">
         Código de barras:
-        <span class="brad-font-weight-bold">[[${codigoBarras}]] </span>
+        <span class="paragraph-data">[[${codigoBarras}]] </span>
     </p>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+    <p class="paragraph ">
         Descrição:
-        <span class="brad-font-weight-bold">[[${descricao}]]</span>
+        <span class="paragraph-data">[[${descricao}]]</span>
     </p>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+    <p class="paragraph">
         UF favorecida:
-        <span class="brad-font-weight-bold">[[${ufFavorecida}]]</span>
+        <span class="paragraph-data">[[${ufFavorecida}]]</span>
     </p>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        <p class="paragraph">
         Código de receita:
-        <span class="brad-font-weight-bold">[[${codigoReceita}]]</span>
+        <span class="paragraph-data">[[${codigoReceita}]]</span>
     </p>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        <p class="paragraph">
         CPF/CNPJ:
-        <span class="brad-font-weight-bold">[[${cpfCnpj}]]</span>
+        <span class="paragraph-data">[[${cpfCnpj}]]</span>
     </p>
 
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        <p class="paragraph">
         DI/DSI:
-        <span class="brad-font-weight-bold">[[${diDsi}]]</span>
+        <span class="paragraph-data">[[${diDsi}]]</span>
     </p>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        <p class="paragraph">
         AIIM:
-        <span class="brad-font-weight-bold">[[${aiim}]]</span>
+        <span class="paragraph-data">[[${aiim}]]</span>
     </p>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        <p class="paragraph">
         Referência:
-        <span class="brad-font-weight-bold">[[${referencia}]]</span>
+        <span class="paragraph-data">[[${referencia}]]</span>
     </p>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        <p class="paragraph">
         Identificador:
-        <span class="brad-font-weight-bold">[[${identificador}]]</span>
+        <span class="paragraph-data">[[${identificador}]]</span>
     </p>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        <p class="paragraph">
         Valor do pagamento:
-        <span class="brad-font-weight-bold">R$ [[${valorPagamento}]]</span>
+        <span class="paragraph-data">R$ [[${valorPagamento}]]</span>
     </p>
 
-    <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
+        <p class="paragraph">
         Autenticação:
-        <span class="brad-font-weight-bold">[[${autenticacao}]]</span>
+        <span class="paragraph-data">[[${autenticacao}]]</span>
     </p>
 
     <div class="border"></div>
@@ -192,26 +256,80 @@
 
     <div class="border"></div>
 
-    <div class="authentication " style="margin-top: 56px">
-        <div class="brad-flex brad-flex-justify-content-center brad-flex-align-items-center">
-            <h2 class="brad-font-title-xl  brad-text-color-neutral-100 brad-m-sm-t">
+    <div class="authentication">
+
+        <div>
+            <h2 class="authentication-title">
                 Autenticação
             </h2>
         </div>
 
 
-        <div class="code-row-1 brad-flex brad-flex-justify-content-center brad-flex-align-items-center">
-            <p class="brad-font-paragraph-md paragraph brad-m-sm-b brad-m-sm-t">be68ab0b 79a6609a ba43db15 8581596d</p>
-        </div>
+<!--        <div class="code-row">-->
+<!--            <p class="paragraph">codAutenticacao</p>-->
+<!--        </div>-->
 
-        <div class="code-row-2 brad-flex brad-flex-justify-content-center brad-flex-align-items-center">
-            <p class="brad-font-paragraph-md paragraph brad-m-sm-b">be68ab0b 79a6609a ba43db15 8581596d</p>
-        </div>
+        <table id="tdAuth">
+            <tbody>
+            <tr>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,0,8)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,8,16)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,16,24)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,24,32)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,32,40)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,40,48)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,48,56)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,56,64)}"></td>
+            </tr>
 
-        <div class="code-row-3 brad-flex brad-flex-justify-content-center brad-flex-align-items-center">
-            <p class="brad-font-paragraph-md paragraph brad-m-sm-b ">be68ab0b 79a6609a ba43db15 8581596d</p>
-        </div>
+            <tr>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,64,72)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,72,80)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,80,88)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,88,96)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,96,104)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,104,112)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,112,120)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,120,128)}"></td>
+            </tr>
 
+            <tr>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,128,136)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,136,144)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,144,152)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,152,160)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,160,168)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,168,176)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,176,184)}"></td>
+                <td
+                        th:text="${#strings.substring(codAutenticacao,184,192)}"></td>
+            </tr>
+            </tbody>
+
+        </table>
 
     </div>
 </div>

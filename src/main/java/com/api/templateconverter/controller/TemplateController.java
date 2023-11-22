@@ -1,7 +1,7 @@
 package com.api.templateconverter.controller;
 
+import com.api.templateconverter.dto.DadosArquivo;
 import com.api.templateconverter.service.PdfConverterService;
-import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +21,10 @@ public class TemplateController {
     PdfConverterService pdfConverterService;
 
     @PostMapping
-    public ResponseEntity<String> handlePostRequest(@RequestBody Object obj) throws DocumentException, IOException {
+    public ResponseEntity<String> handlePostRequest(@RequestBody DadosArquivo adosArquivo) throws IOException {
 
-       String resultado =  pdfConverterService.convertPdf();
+
+       String resultado =  pdfConverterService.convertPdf(adosArquivo);
 
         return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
