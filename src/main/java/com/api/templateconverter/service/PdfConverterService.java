@@ -37,21 +37,21 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @Service
 public class PdfConverterService {
 
-        public String convertPdf(DadosArquivo dadosArquivo) throws IOException {
-            return this.convertHtmlPdf(dadosArquivo);
+        public String convertPdf(DadosArquivo dadosArquivo, String templateName) throws IOException {
+            return this.convertHtmlPdf(dadosArquivo, templateName);
         }
 
-    public String convertHtmlPdf(DadosArquivo dadosArquivo) throws IOException {
+    public String convertHtmlPdf(DadosArquivo dadosArquivo, String templateName) throws IOException {
         String comprovanteHtml = "";
         String arquivoPDFString = "";
 
 
-        comprovanteHtml =  parseThymeleafTemplate(dadosArquivo);
+        comprovanteHtml =  parseThymeleafTemplate(dadosArquivo, templateName);
 
         ByteArrayOutputStream tempPdf = createPdf(comprovanteHtml);
         ByteArrayOutputStream arquivoPDF = new ByteArrayOutputStream();
 
-        try (FileOutputStream fos = new FileOutputStream("example.pdf")) {
+        try (FileOutputStream fos = new FileOutputStream(templateName + ".pdf")) {
             fos.write(tempPdf.toByteArray());
         }
 
@@ -139,7 +139,7 @@ public class PdfConverterService {
         }
     }
 
-    private String parseThymeleafTemplate(DadosArquivo dadosArquivo) {
+    private String parseThymeleafTemplate(DadosArquivo dadosArquivo, String templateName) {
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
@@ -166,7 +166,7 @@ public class PdfConverterService {
         }
 
 
-        return templateEngine.process("agendamento_template", context);
+        return templateEngine.process(templateName, context);
     }
 
 

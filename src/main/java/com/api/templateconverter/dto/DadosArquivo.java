@@ -25,4 +25,29 @@ public class DadosArquivo {
     private String autenticacao;
     private String codAutenticacao;
 
+
+    private String razaoSocial;
+    private String beneficiario;
+    private String cpfCnpjBeneficiario;
+    private String instituicao;
+    private String beneficiarioFinal;
+    private String cpfCnpjBeneficiarioFinal;
+
+    private String bancoDestinatario;
+    private String dataDebito;
+    private String dataVencimento;
+    private String valorInicial;
+    private String desconto;
+    private String abatimento;
+    private String bonificacao;
+    private String multa;
+    private String juros;
+    private String protocolo;
+
+    private String nomePagador;
+    private String cpfCnpjPagador;
+
+    private String nomePagadorRegistradoBoleto;
+    private String cpfCnpjPagadorRegistradoBoleto;
+
 }

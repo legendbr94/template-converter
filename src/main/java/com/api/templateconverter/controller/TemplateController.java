@@ -21,28 +21,29 @@ import java.util.Base64;
 
 
 @RestController
-@RequestMapping("/template")
+@RequestMapping("/templates")
 public class TemplateController {
 
     @Autowired
     PdfConverterService pdfConverterService;
 
 
-    @PostMapping("/{type}")
+    @PostMapping("/{templateName}/{type}")
     public ResponseEntity<?> handlePostRequest(
+            @PathVariable String templateName,
             @PathVariable String type,
             @RequestBody DadosArquivo dadosArquivo
     ) throws IOException {
 
         if ("base64".equals(type)) {
 
-            String resultado = pdfConverterService.convertPdf(dadosArquivo);
+            String resultado = pdfConverterService.convertPdf(dadosArquivo, templateName);
 
             // Return Base64 string in the response body
             return ResponseEntity.ok().body("\nBase64: " + resultado);
         } else if ("pdf".equals(type)) {
 
-            String base64ZipedResult = pdfConverterService.convertPdf(dadosArquivo);
+            String base64ZipedResult = pdfConverterService.convertPdf(dadosArquivo, templateName);
 
             //String unzipedBase64 = CompactacaoUtil.reverterBase64Descompactar(base64ZipedResult);
             //byte[] encodedBytes = Base64.getEncoder().encode(unzipedBase64.getBytes());
@@ -52,7 +53,7 @@ public class TemplateController {
 
 
             // Load PDF file from the classpath
-            Resource resource = new FileSystemResource("example.pdf");
+            Resource resource = new FileSystemResource(templateName + ".pdf");
 
             //Resource resource = new ClassPathResource("example.pdf");
 

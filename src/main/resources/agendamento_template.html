@@ -14,15 +14,26 @@
             margin-left: -50px;
         }
 
-        .cp-title{
+        .title{
             font-weight: 600;
             letter-spacing: 0px;
             color: #000000;
             opacity: 1;
             font-size: 22px !important;
-            margin-top: -30px;
+            margin-top: -65px;
             margin-bottom: 16px;
         }
+
+        .sub-title{
+            font-weight: 600;
+            letter-spacing: 0px;
+            color: #000000;
+            opacity: 1;
+            font-size: 22px !important;
+            margin-bottom: 16px;
+            margin-top: 22px;
+        }
+
 
         .content {
             margin-top: 0px;
@@ -31,7 +42,7 @@
         }
 
         .controlNumber{
-            margin-bottom: 32px;
+            margin-bottom: 22px;
             font-size: 20px !important;
             font-weight: 500;
             letter-spacing: 0px;
@@ -42,11 +53,13 @@
         .dateHour{
             font-size: 16px !important;
             color: #47484c;
-            margin-bottom: 8px;
+            margin-top: -25px;
+            margin-bottom: -10px;
         }
 
         .paragraph{
-            margin-bottom: 16px;
+            margin-top: 8px;
+            margin-bottom: 10px;
             font-size: 20px !important;
             font-weight: 500;
             letter-spacing: 0px;
@@ -72,7 +85,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 32px;
+            margin-bottom: 22px;
         }
 
         .amount{
@@ -90,41 +103,6 @@
             border-style: solid;
         }
 
-        .authentication{
-            /* Layout Properties */
-            margin-top: 56px;
-            padding-top: 5px;
-            padding-bottom: 35px;
-            left: 80px;
-            width: available;
-            height: 173px;
-            background: #F0F1F5 0% 0% no-repeat padding-box;
-            opacity: 1;
-        }
-
-        .authentication-title{
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 600;
-            letter-spacing: 0px;
-            color: #000000;
-            opacity: 1;
-            font-size: 24px !important;
-        }
-
-        .code-row{
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 1;
-            font-size: 20px !important;
-            font-weight: 500;
-            letter-spacing: 0px;
-            color: #47484c;
-        }
 
         #tdAuth td {
             max-width: 175px;
@@ -150,188 +128,165 @@
 
     <div class="content">
 
-    <h1 class="cp-title">
+    <h1 class="title">
         Pagamento agendado - boleto de cobrança
     </h1>
 
-    <p class="dateHour">[[${dataHora}]]</p>
+    <p class="dateHour" th:if="${dataHora}">[[${dataHora}]] </p>
 
-    <p class="controlNumber">
+    <p class="controlNumber" th:if="${numeroControle}">
         Número de controle:
         <span class="paragraph-data">[[${numeroControle}]]</span>
     </p>
 
-    <div class="amount-bg">
+    <div class="amount-bg" th:if="${valor}">
         <h1 class="amount">
             Valor: R$ [[${valor}]]
         </h1>
     </div>
 
-        <h1 class="cp-title">
+        <h1 class="sub-title">
             Dados de quem vai receber
         </h1>
 
-    <p class="paragraph">
-        Número do banco/Agência:
-        <span class="paragraph-data">[[${numeroBancoAgencia}]]</span>
+    <p class="paragraph" th:if="${razaoSocial}">
+        Razão social:
+        <span class="paragraph-data">[[${razaoSocial}]]</span>
     </p>
 
-    <p class="paragraph">
-        Canal de pagamento:
-        <span class="paragraph-data"> [[${canalPagamento}]]</span>
-    </p>
+        <p class="paragraph" th:if="${beneficiario}">
+            Beneficiário:
+            <span class="paragraph-data">[[${beneficiario}]]</span>
+        </p>
 
-    <p class="paragraph">
-        Data do pagamento:
-        <span class="paragraph-data"> [[${dataPagamento}]]</span>
-    </p>
+        <p class="paragraph" th:if="${cpfCnpjBeneficiario}">
+            CPF/CNPJ:
+            <span class="paragraph-data">[[${cpfCnpjBeneficiario}]]</span>
+        </p>
 
-    <p class="paragraph">
-        Código de barras:
-        <span class="paragraph-data">[[${codigoBarras}]] </span>
-    </p>
+        <p class="paragraph" th:if="${instituicao}">
+            Instituição:
+            <span class="paragraph-data">[[${instituicao}]]</span>
+        </p>
 
-    <p class="paragraph ">
-        Descrição:
-        <span class="paragraph-data">[[${descricao}]]</span>
-    </p>
+        <p class="paragraph" th:if="${beneficiarioFinal}">
+            Beneficiário final:
+            <span class="paragraph-data">[[${beneficiarioFinal}]]</span>
+        </p>
 
-    <p class="paragraph">
-        UF favorecida:
-        <span class="paragraph-data">[[${ufFavorecida}]]</span>
-    </p>
+        <p class="paragraph" th:if="${cpfCnpjBeneficiarioFinal}">
+            CPF/CNPJ:
+            <span class="paragraph-data">[[${cpfCnpjBeneficiarioFinal}]]</span>
+        </p>
 
-        <p class="paragraph">
-        Código de receita:
-        <span class="paragraph-data">[[${codigoReceita}]]</span>
-    </p>
+        <div class="border"></div>
 
-        <p class="paragraph">
-        CPF/CNPJ:
-        <span class="paragraph-data">[[${cpfCnpj}]]</span>
-    </p>
+        <h1 class="sub-title">
+            Dados do pagamento
+        </h1>
+
+        <p class="paragraph" th:if="${codigoBarras}">
+            Código de barras:
+            <span class="paragraph-data">[[${codigoBarras}]] </span>
+        </p>
+
+        <p class="paragraph" th:if="${bancoDestinatario}">
+            Banco destinatário:
+            <span class="paragraph-data">[[${bancoDestinatario}]] </span>
+        </p>
+
+        <p class="paragraph" th:if="${dataDebito}">
+            Data do débito:
+            <span class="paragraph-data">[[${dataDebito}]] </span>
+        </p>
+
+        <p class="paragraph" th:if="${dataVencimento}">
+            Data do vencimento:
+            <span class="paragraph-data">[[${dataVencimento}]] </span>
+        </p>
+
+        <p class="paragraph" th:if="${valorInicial}">
+            Valor inicial:
+            <span class="paragraph-data">[[${valorInicial}]] </span>
+        </p>
+
+        <p class="paragraph" th:if="${desconto}">
+            Desconto:
+            <span class="paragraph-data">[[${desconto}]] </span>
+        </p>
+
+       <p class="paragraph" th:if="${abatimento}">
+           Abatimento:
+            <span class="paragraph-data">[[${abatimento}]] </span>
+        </p>
+
+        <p class="paragraph" th:if="${bonificacao}">
+            Bonificação:
+            <span class="paragraph-data">[[${bonificacao}]] </span>
+        </p>
+
+        <p class="paragraph" th:if="${multa}">
+            Multa:
+            <span class="paragraph-data">[[${multa}]] </span>
+        </p>
+
+        <p class="paragraph" th:if="${juros}">
+            Juros:
+            <span class="paragraph-data">[[${juros}]] </span>
+        </p>
+
+        <p class="paragraph" th:if="${descricao}">
+            Descrição:
+            <span class="paragraph-data">[[${descricao}]] </span>
+        </p>
+
+      <p class="paragraph" th:if="${protocolo}">
+          Protocolo:
+            <span class="paragraph-data">[[${protocolo}]] </span>
+        </p>
 
 
-        <p class="paragraph">
-        DI/DSI:
-        <span class="paragraph-data">[[${diDsi}]]</span>
-    </p>
+        <div class="border"></div>
 
-        <p class="paragraph">
-        AIIM:
-        <span class="paragraph-data">[[${aiim}]]</span>
-    </p>
+        <h1 class="sub-title">
+            Dados de quem fez o pagamento
+        </h1>
 
-        <p class="paragraph">
-        Referência:
-        <span class="paragraph-data">[[${referencia}]]</span>
-    </p>
+        <p class="paragraph" th:if="${nomePagador}">
+            Nome:
+            <span class="paragraph-data">[[${nomePagador}]] </span>
+        </p>
 
-        <p class="paragraph">
-        Identificador:
-        <span class="paragraph-data">[[${identificador}]]</span>
-    </p>
+        <p class="paragraph" th:if="${cpfCnpjPagador}">
+            CPF/CNPJ:
+            <span class="paragraph-data">[[${cpfCnpjPagador}]] </span>
+        </p>
 
-        <p class="paragraph">
-        Valor do pagamento:
-        <span class="paragraph-data">R$ [[${valorPagamento}]]</span>
-    </p>
+        <div class="border"></div>
 
-        <p class="paragraph">
-        Autenticação:
-        <span class="paragraph-data">[[${autenticacao}]]</span>
-    </p>
+        <h1 class="sub-title" >
+            Dados do pagador registrados no boleto
+        </h1>
+
+        <p class="paragraph" th:if="${nomePagadorRegistradoBoleto}">
+            Nome:
+            <span class="paragraph-data">[[${nomePagadorRegistradoBoleto}]] </span>
+        </p>
+
+        <p class="paragraph" th:if="${cpfCnpjPagadorRegistradoBoleto}">
+            CPF/CNPJ:
+            <span class="paragraph-data">[[${cpfCnpjPagadorRegistradoBoleto}]] </span>
+        </p>
+
 
     <div class="border"></div>
 
-    <div class="brad-m-md-t">
-        <p class="brad-font-paragraph-md paragraph  brad-m-sm-b">
-            Comprovante de pagamento emitido de acordo com a Portaria CAT- 126, de 16/09/2011, e autorizado pelo Processo nº SF-13836-561535/1999.
-        </p>
-
-        <p class="brad-font-paragraph-md paragraph brad-m-sm-b">
-            Via do contribuinte
+    <div>
+        <p class="paragraph">
+            Agendamentos podem ser alterados ou cancelados. O comprovante da transação vai estar disponível no dia do débito.
         </p>
     </div>
 
-    <div class="border"></div>
-
-    <div class="authentication">
-
-        <div>
-            <h2 class="authentication-title">
-                Autenticação
-            </h2>
-        </div>
-
-
-<!--        <div class="code-row">-->
-<!--            <p class="paragraph">codAutenticacao</p>-->
-<!--        </div>-->
-
-        <table id="tdAuth">
-            <tbody>
-            <tr>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,0,8)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,8,16)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,16,24)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,24,32)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,32,40)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,40,48)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,48,56)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,56,64)}"></td>
-            </tr>
-
-            <tr>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,64,72)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,72,80)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,80,88)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,88,96)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,96,104)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,104,112)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,112,120)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,120,128)}"></td>
-            </tr>
-
-            <tr>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,128,136)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,136,144)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,144,152)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,152,160)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,160,168)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,168,176)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,176,184)}"></td>
-                <td
-                        th:text="${#strings.substring(codAutenticacao,184,192)}"></td>
-            </tr>
-            </tbody>
-
-        </table>
-
-    </div>
 </div>
 </body>
 
