@@ -7,6 +7,7 @@ import com.api.templateconverter.util.CompactacaoUtil;
 import org.springframework.stereotype.Service;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
@@ -36,19 +37,24 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @Service
 public class PdfConverterService {
 
-        public String convertPdf(DadosArquivo obj) throws IOException {
-            return this.convertHtmlPdf(obj);
+        public String convertPdf(DadosArquivo dadosArquivo) throws IOException {
+            return this.convertHtmlPdf(dadosArquivo);
         }
 
-    public String convertHtmlPdf(DadosArquivo obj) throws IOException {
+    public String convertHtmlPdf(DadosArquivo dadosArquivo) throws IOException {
         String comprovanteHtml = "";
         String arquivoPDFString = "";
 
 
-        comprovanteHtml =  parseThymeleafTemplate(obj);
+        comprovanteHtml =  parseThymeleafTemplate(dadosArquivo);
 
         ByteArrayOutputStream tempPdf = createPdf(comprovanteHtml);
         ByteArrayOutputStream arquivoPDF = new ByteArrayOutputStream();
+
+        try (FileOutputStream fos = new FileOutputStream("example.pdf")) {
+            fos.write(tempPdf.toByteArray());
+        }
+
         scalePdf(arquivoPDF, new ByteArrayInputStream(tempPdf.toByteArray()), 0.7071f);
         arquivoPDFString = CompactacaoUtil.compactarTransformarBase64(arquivoPDF.toByteArray());
         return arquivoPDFString;
@@ -160,7 +166,7 @@ public class PdfConverterService {
         }
 
 
-        return templateEngine.process("thymeleaf_template", context);
+        return templateEngine.process("agendamento_template", context);
     }
 
 
