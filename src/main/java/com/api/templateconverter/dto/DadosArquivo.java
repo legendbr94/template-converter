@@ -58,4 +58,27 @@ public class DadosArquivo {
     private String autenticacaoBancaria;
     private String numeroDocumento;
 
+
+
+
+    private String empresaOrgao;
+    private String cnpjCei;
+    private String identificadorEmpresa;
+    private String competencia;
+    private String codigoConvenio;
+    private String dataValidade;
+
+    private String banco;
+
+    private String codigoMunicipio;
+    private String numeroGuia;
+
+
+
+
+    private String cota;
+    private String exercicio;
+    private String placa;
+
+
 }
