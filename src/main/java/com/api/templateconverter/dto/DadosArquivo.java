@@ -10,6 +10,7 @@ public class DadosArquivo {
     private String numeroControle;
     private String valor;
     private String numeroBancoAgencia;
+    private String agencia;
     private String canalPagamento;
     private String dataPagamento;
     private String codigoBarras;
@@ -49,5 +50,12 @@ public class DadosArquivo {
 
     private String nomePagadorRegistradoBoleto;
     private String cpfCnpjPagadorRegistradoBoleto;
+
+    private String agenteArrecadador;
+    private String periodoApuracao;
+    private String numeroCnpj;
+    private String valorTotal;
+    private String autenticacaoBancaria;
+    private String numeroDocumento;
 
 }

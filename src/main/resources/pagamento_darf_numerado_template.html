@@ -154,7 +154,7 @@
     <div class="content">
 
     <h1 class="title">
-        Comprovante de pagamento - DARF
+        Comprovante de pagamento - DARF numerado
     </h1>
 
     <p class="dateHour" th:if="${dataHora}">[[${dataHora}]] </p>
@@ -175,7 +175,8 @@
         Agência:
         <span class="paragraph-data">[[${agencia}]]</span>
     </p>
-    <p class="paragraph" th:if="${agenteArrecadador}">
+
+        <p class="paragraph" th:if="${agenteArrecadador}">
         Agente arrecadador:
         <span class="paragraph-data">[[${agenteArrecadador}]]</span>
     </p>
@@ -191,25 +192,9 @@
             <span class="paragraph-data">[[${dataPagamento}]]</span>
         </p>
 
-        <p class="paragraph" th:if="${periodoApuracao}">
-            Período de apuração:
-            <span class="paragraph-data">[[${periodoApuracao}]]</span>
-        </p>
-
-        <p class="paragraph" th:if="${numeroCnpj}">
-            Número do CNPJ:
-            <span class="paragraph-data">[[${numeroCnpj}]]</span>
-        </p>
-
-        <p class="paragraph" th:if="${codigoReceita}">
-            Código da receita:
-            <span class="paragraph-data">[[${codigoReceita}]]</span>
-        </p>
-
-
-        <p class="paragraph" th:if="${dataVencimento}">
-            Data do vencimento:
-            <span class="paragraph-data">[[${dataVencimento}]] </span>
+        <p class="paragraph" th:if="${numeroDocumento}">
+            Número do documento:
+            <span class="paragraph-data">[[${numeroDocumento}]] </span>
         </p>
 
         <p class="paragraph" th:if="${valorTotal}">
@@ -227,7 +212,7 @@
 
         <div>
             <p class=" paragraph">
-                Modelo aprovado pela SRF - ADE Conjunto Corat/Cotec Nº 001 de 2006.
+                Modelo aprovado pelo Ato Declaratório Executivo Conjunto Codac/Cotec Nº 1, de 31 de outubro de 2011.
             </p>
         </div>
 

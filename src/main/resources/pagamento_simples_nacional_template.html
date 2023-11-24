@@ -154,7 +154,7 @@
     <div class="content">
 
     <h1 class="title">
-        Comprovante de pagamento - DARF
+        Comprovante de pagamento - Simples Nacional
     </h1>
 
     <p class="dateHour" th:if="${dataHora}">[[${dataHora}]] </p>
@@ -170,11 +170,11 @@
         </h1>
     </div>
 
-
     <p class="paragraph" th:if="${agencia}">
         Agência:
         <span class="paragraph-data">[[${agencia}]]</span>
     </p>
+
     <p class="paragraph" th:if="${agenteArrecadador}">
         Agente arrecadador:
         <span class="paragraph-data">[[${agenteArrecadador}]]</span>
@@ -185,27 +185,15 @@
             <span class="paragraph-data">[[${codigoBarras}]] </span>
         </p>
 
-
         <p class="paragraph" th:if="${dataPagamento}">
             Data do pagamento:
             <span class="paragraph-data">[[${dataPagamento}]]</span>
         </p>
 
-        <p class="paragraph" th:if="${periodoApuracao}">
-            Período de apuração:
-            <span class="paragraph-data">[[${periodoApuracao}]]</span>
+        <p class="paragraph" th:if="${numeroDocumento}">
+            Número do documento:
+            <span class="paragraph-data">[[${numeroDocumento}]]</span>
         </p>
-
-        <p class="paragraph" th:if="${numeroCnpj}">
-            Número do CNPJ:
-            <span class="paragraph-data">[[${numeroCnpj}]]</span>
-        </p>
-
-        <p class="paragraph" th:if="${codigoReceita}">
-            Código da receita:
-            <span class="paragraph-data">[[${codigoReceita}]]</span>
-        </p>
-
 
         <p class="paragraph" th:if="${dataVencimento}">
             Data do vencimento:
@@ -224,12 +212,6 @@
 
 
     <div class="border"></div>
-
-        <div>
-            <p class=" paragraph">
-                Modelo aprovado pela SRF - ADE Conjunto Corat/Cotec Nº 001 de 2006.
-            </p>
-        </div>
 
         <div class="authentication">
 
