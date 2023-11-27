@@ -58,9 +58,6 @@ public class DadosArquivo {
     private String autenticacaoBancaria;
     private String numeroDocumento;
 
-
-
-
     private String empresaOrgao;
     private String cnpjCei;
     private String identificadorEmpresa;
@@ -73,12 +70,11 @@ public class DadosArquivo {
     private String codigoMunicipio;
     private String numeroGuia;
 
-
-
-
     private String cota;
     private String exercicio;
     private String placa;
 
+    private String numeroAiim;
+    private String inscricaoDividaAtivaNumeroEtiqueta;
 
 }
